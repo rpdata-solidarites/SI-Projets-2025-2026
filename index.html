@@ -803,12 +803,14 @@
             pane: 'pane_BaseSI_5',
             onEachFeature: pop_BaseSI_5,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_BaseSI_5_0(feature));
-            },
+    var icon = L.icon({
+        iconUrl: 'legend/BaseSI_5_Base0.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -16]
+    });
+    return L.marker(latlng, {icon: icon});
+},
         });
         bounds_group.addLayer(layer_BaseSI_5);
         map.addLayer(layer_BaseSI_5);
