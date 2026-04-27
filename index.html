@@ -53,7 +53,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[11.228139775568689,-5.112855038699649],[14.558098110880383,-0.661372274447217]]);
+        }).fitBounds([[12.081182542163432,-3.939413083215663],[15.382521434312366,0.5120696810367713]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -204,10 +204,10 @@
                 pane: 'pane_Autrecommune_1',
                 opacity: 1,
                 color: 'rgba(207,207,207,1.0)',
-                dashArray: '5.0,1.0',
+                dashArray: '15.0,3.0',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 3.0, 
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(207,207,207,0.0)',
@@ -261,7 +261,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 2.0, 
+                weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(197,245,253,0.0)',
@@ -317,7 +317,7 @@
         }
 
         function style_Nombredebnficiaires_3_0(feature) {
-            if (feature.properties['Benef2'] >= 611.000000 && feature.properties['Benef2'] <= 2500.000000 ) {
+            if (feature.properties['Benef2'] >= 611.000000 && feature.properties['Benef2'] <= 1470.000000 ) {
                 return {
                 pane: 'pane_Nombredebnficiaires_3',
                 opacity: 1,
@@ -328,11 +328,11 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(161,249,246,1.0)',
+                fillColor: 'rgba(162,251,248,1.0)',
                 interactive: true,
             }
             }
-            if (feature.properties['Benef2'] >= 2500.000000 && feature.properties['Benef2'] <= 4625.000000 ) {
+            if (feature.properties['Benef2'] >= 1470.000000 && feature.properties['Benef2'] <= 3322.333333 ) {
                 return {
                 pane: 'pane_Nombredebnficiaires_3',
                 opacity: 1,
@@ -343,11 +343,11 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(101,193,189,1.0)',
+                fillColor: 'rgba(93,200,196,1.0)',
                 interactive: true,
             }
             }
-            if (feature.properties['Benef2'] >= 4625.000000 && feature.properties['Benef2'] <= 71834.000000 ) {
+            if (feature.properties['Benef2'] >= 3322.333333 && feature.properties['Benef2'] <= 71834.000000 ) {
                 return {
                 pane: 'pane_Nombredebnficiaires_3',
                 opacity: 1,
@@ -358,7 +358,7 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(105,153,151,1.0)',
+                fillColor: 'rgba(98,142,140,1.0)',
                 interactive: true,
             }
             }
@@ -803,14 +803,12 @@
             pane: 'pane_BaseSI_5',
             onEachFeature: pop_BaseSI_5,
             pointToLayer: function (feature, latlng) {
-    var icon = L.icon({
-        iconUrl: 'legend/BaseSI_5_Base0.png',
-        iconSize: [32, 32],
-        iconAnchor: [16, 16],
-        popupAnchor: [0, -16]
-    });
-    return L.marker(latlng, {icon: icon});
-},
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_BaseSI_5_0(feature));
+            },
         });
         bounds_group.addLayer(layer_BaseSI_5);
         map.addLayer(layer_BaseSI_5);
@@ -870,7 +868,7 @@
         var overlaysTree = [
             {label: 'Base SI<br /><table><tr><td style="text-align: center;"><img src="legend/BaseSI_5_Base0.png" /></td><td>Base</td></tr><tr><td style="text-align: center;"><img src="legend/BaseSI_5_Sousbase1.png" /></td><td>Sous base</td></tr></table>', layer: layer_BaseSI_5},
             {label: 'Projets<br /><table><tr><td style="text-align: center;"><img src="legend/Projets_4_BHA30880.png" /></td><td>BHA3088</td></tr><tr><td style="text-align: center;"><img src="legend/Projets_4_EC35791.png" /></td><td>EC3579</td></tr><tr><td style="text-align: center;"><img src="legend/Projets_4_EC36242.png" /></td><td>EC3624</td></tr><tr><td style="text-align: center;"><img src="legend/Projets_4_FH38283.png" /></td><td>FH3828</td></tr><tr><td style="text-align: center;"><img src="legend/Projets_4_RRM4.png" /></td><td>RRM</td></tr><tr><td style="text-align: center;"><img src="legend/Projets_4_GiveWell5.png" /></td><td>GiveWell</td></tr><tr><td style="text-align: center;"><img src="legend/Projets_4_EC40526.png" /></td><td>EC4052</td></tr><tr><td style="text-align: center;"><img src="legend/Projets_4_EC39137.png" /></td><td>EC3913</td></tr><tr><td style="text-align: center;"><img src="legend/Projets_4_EC39268.png" /></td><td>EC3926</td></tr></table>', layer: layer_Projets_4},
-            {label: 'Nombre de bénéficiaires<br /><table><tr><td style="text-align: center;"><img src="legend/Nombredebnficiaires_3_61125000.png" /></td><td>611 - 2500</td></tr><tr><td style="text-align: center;"><img src="legend/Nombredebnficiaires_3_250046251.png" /></td><td>2500 - 4625</td></tr><tr><td style="text-align: center;"><img src="legend/Nombredebnficiaires_3_4625718342.png" /></td><td>4625 - 71834</td></tr></table>', layer: layer_Nombredebnficiaires_3},
+            {label: 'Nombre de bénéficiaires<br /><table><tr><td style="text-align: center;"><img src="legend/Nombredebnficiaires_3_61114700.png" /></td><td>611 - 1470</td></tr><tr><td style="text-align: center;"><img src="legend/Nombredebnficiaires_3_147033221.png" /></td><td>1470 - 3322</td></tr><tr><td style="text-align: center;"><img src="legend/Nombredebnficiaires_3_3322718342.png" /></td><td>3322 - 71834</td></tr></table>', layer: layer_Nombredebnficiaires_3},
             {label: '<img src="legend/Rgiondintervention_2.png" /> Région d\'intervention', layer: layer_Rgiondintervention_2},
             {label: '<img src="legend/Autrecommune_1.png" /> Autre commune', layer: layer_Autrecommune_1},
             {label: "Google Maps", layer: layer_GoogleMaps_0},]
@@ -904,7 +902,7 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Nom_2'] !== null?String('<div style="color: #000000; font-size: 6pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nom_2']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Nombredebnficiaires_3'});
+            layer.bindTooltip((layer.feature.properties['Nom_2'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nom_2']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Nombredebnficiaires_3'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
